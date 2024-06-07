@@ -1,0 +1,45 @@
+================ Training Loss (Sun May 26 13:43:02 2024) ================
+(epoch: 1, iters: 100, time: 0.620) app_g: 0.318 ad_g: 0.061 img_d: 0.691 per: 1.293 sty: 0.244 
+(epoch: 2, iters: 200, time: 0.545) app_g: 0.134 ad_g: 0.062 img_d: 0.679 per: 1.370 sty: 0.312 
+(epoch: 3, iters: 300, time: 0.568) app_g: 0.454 ad_g: 0.058 img_d: 0.607 per: 1.467 sty: 0.308 
+(epoch: 4, iters: 400, time: 0.608) app_g: 0.158 ad_g: 0.069 img_d: 0.702 per: 0.679 sty: 0.073 
+(epoch: 5, iters: 500, time: 0.556) app_g: 0.103 ad_g: 0.063 img_d: 0.677 per: 1.391 sty: 0.283 
+================ Training Loss (Sun May 26 14:11:02 2024) ================
+================ Training Loss (Sun May 26 14:11:35 2024) ================
+(epoch: 1, iters: 100, time: 0.581) app_g: 0.334 ad_g: 0.057 img_d: 0.673 per: 1.351 sty: 0.237 
+(epoch: 2, iters: 200, time: 0.530) app_g: 0.116 ad_g: 0.063 img_d: 0.685 per: 1.148 sty: 0.145 
+(epoch: 3, iters: 300, time: 0.546) app_g: 0.127 ad_g: 0.061 img_d: 0.679 per: 1.289 sty: 0.193 
+(epoch: 4, iters: 400, time: 0.599) app_g: 0.192 ad_g: 0.066 img_d: 0.693 per: 1.256 sty: 0.237 
+(epoch: 5, iters: 500, time: 0.570) app_g: 0.193 ad_g: 0.055 img_d: 0.676 per: 1.176 sty: 0.170 
+(epoch: 6, iters: 600, time: 0.551) app_g: 0.199 ad_g: 0.064 img_d: 0.669 per: 1.270 sty: 0.266 
+(epoch: 7, iters: 700, time: 0.534) app_g: 0.267 ad_g: 0.060 img_d: 0.671 per: 1.209 sty: 0.217 
+(epoch: 8, iters: 800, time: 0.550) app_g: 0.129 ad_g: 0.068 img_d: 0.674 per: 1.210 sty: 0.199 
+(epoch: 9, iters: 900, time: 0.560) app_g: 0.126 ad_g: 0.072 img_d: 0.639 per: 1.214 sty: 0.222 
+(epoch: 10, iters: 1000, time: 0.530) app_g: 0.139 ad_g: 0.060 img_d: 0.685 per: 0.943 sty: 0.112 
+(epoch: 11, iters: 1100, time: 0.593) app_g: 0.079 ad_g: 0.063 img_d: 0.657 per: 1.086 sty: 0.137 
+(epoch: 12, iters: 1200, time: 0.572) app_g: 0.141 ad_g: 0.070 img_d: 0.638 per: 1.221 sty: 0.213 
+(epoch: 13, iters: 1300, time: 0.578) app_g: 0.087 ad_g: 0.063 img_d: 0.652 per: 1.200 sty: 0.247 
+================ Training Loss (Fri May 31 20:55:54 2024) ================
+(epoch: 1, iters: 100, time: 0.909) app_g: 0.354 ad_g: 0.064 img_d: 0.654 per: 1.600 sty: 0.223 
+(epoch: 2, iters: 200, time: 0.911) app_g: 0.147 ad_g: 0.065 img_d: 0.694 per: 1.255 sty: 0.257 
+================ Training Loss (Fri May 31 21:04:31 2024) ================
+================ Training Loss (Fri May 31 21:36:40 2024) ================
+(epoch: 1, iters: 100, time: 0.877) app_g: 0.272 ad_g: 0.063 img_d: 0.659 per: 1.712 sty: 0.336 
+================ Training Loss (Fri May 31 21:47:28 2024) ================
+================ Training Loss (Fri May 31 21:47:57 2024) ================
+(epoch: 1, iters: 100, time: 0.906) app_g: 0.128 ad_g: 0.063 img_d: 0.668 per: 1.388 sty: 0.199 
+(epoch: 2, iters: 200, time: 0.889) app_g: 0.138 ad_g: 0.062 img_d: 0.686 per: 1.397 sty: 0.241 
+================ Training Loss (Fri May 31 21:50:43 2024) ================
+================ Training Loss (Fri Jun  7 14:55:06 2024) ================
+(epoch: 1, iters: 100, time: 0.562) app_g: 0.152 ad_g: 0.062 img_d: 0.674 per: 1.578 sty: 0.266 
+(epoch: 2, iters: 200, time: 0.563) app_g: 0.093 ad_g: 0.063 img_d: 0.681 per: 1.316 sty: 0.219 
+(epoch: 3, iters: 300, time: 0.533) app_g: 0.194 ad_g: 0.057 img_d: 0.683 per: 1.367 sty: 0.316 
+(epoch: 4, iters: 400, time: 0.602) app_g: 0.133 ad_g: 0.066 img_d: 0.709 per: 1.076 sty: 0.168 
+(epoch: 5, iters: 500, time: 0.590) app_g: 0.135 ad_g: 0.061 img_d: 0.703 per: 1.301 sty: 0.216 
+(epoch: 6, iters: 600, time: 0.553) app_g: 0.151 ad_g: 0.064 img_d: 0.682 per: 1.500 sty: 0.304 
+(epoch: 7, iters: 700, time: 0.541) app_g: 0.053 ad_g: 0.063 img_d: 0.684 per: 0.999 sty: 0.111 
+(epoch: 8, iters: 800, time: 0.514) app_g: 0.227 ad_g: 0.065 img_d: 0.646 per: 0.979 sty: 0.135 
+================ Training Loss (Fri Jun  7 15:00:35 2024) ================
+================ Training Loss (Fri Jun  7 15:03:15 2024) ================
+================ Training Loss (Fri Jun  7 15:03:51 2024) ================
+================ Training Loss (Fri Jun  7 15:04:36 2024) ================

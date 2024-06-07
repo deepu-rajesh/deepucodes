@@ -1,30 +1,30 @@
 import torch
-from .base_model import BaseModel
-from . import base_function, net2
-from util import task
+from model.base_model import BaseModel
+from model import base_function, net2
 import itertools
 from model.loss import AdversarialLoss, PerceptualLoss, StyleLoss
 
 
 class Can(BaseModel):
-    """This class implements the Context Adaptive Network, for 256*256 resolution image inpainting"""
+    """This class implements the tformer, for 256*256 resolution image inpainting"""
     def name(self):
         return "CANet"
 
     @staticmethod
     def modify_options(parser, is_train=True):
         """Add new options and rewrite default values for existing options"""
-        parser.add_argument('--output_scale', type=int, default=4, help='# of number of the output scale')
+        parser.add_argument('--output_scale', type=int, default=1, help='# of number of the output scale')
         if is_train:
-            parser.add_argument('--lambda_per', type=float, default=1, help='weight for Perceptual Loss')
-            parser.add_argument('--lambda_l1', type=float, default=1, help='weight for l1  loss')
+            parser.add_argument('--train_paths', type=str, default='two', help='training strategies with one path or two paths')
+            parser.add_argument('--lambda_per', type=float, default=1, help='weight for perceptual loss')
+            parser.add_argument('--lambda_l1', type=float, default=1, help='weight for reconstruction loss l1')
             parser.add_argument('--lambda_g', type=float, default=0.1, help='weight for generation loss')
-            parser.add_argument('--lambda_sty', type=float, default=250, help='weight for sty loss') # default =250
+            parser.add_argument('--lambda_sty', type=float, default=250, help='weight for style loss')
 
         return parser
 
     def __init__(self, opt):
-        """Initial the CAnet model"""
+        """Initial the inpainting model"""
         BaseModel.__init__(self, opt)
 
         self.loss_names = ['app_g', 'ad_g', 'img_d', 'per', 'sty']
@@ -37,6 +37,8 @@ class Can(BaseModel):
         # define the discriminator model
         self.net_D = net2.define_d(gpu_ids=opt.gpu_ids)
 
+        self.net_G = self.net_G.cuda(self.gpu_ids[0])
+        self.net_D = self.net_D.cuda(self.gpu_ids[0])
 
 
         if self.isTrain:
@@ -48,7 +50,6 @@ class Can(BaseModel):
             # define the optimizer
             self.optimizer_G = torch.optim.AdamW(itertools.chain(filter(lambda p: p.requires_grad, self.net_G.parameters())), lr=opt.lr, betas=(opt.beta1, opt.beta2))
             self.optimizer_D = torch.optim.AdamW(itertools.chain(filter(lambda p: p.requires_grad, self.net_D.parameters())),lr=opt.lr, betas=(opt.beta1, opt.beta2))
-
             self.optimizers.append(self.optimizer_G)
             self.optimizers.append(self.optimizer_D)
         # load the pretrained model and schedulers
@@ -64,7 +65,6 @@ class Can(BaseModel):
         if len(self.gpu_ids) > 0:
             self.img = self.img.cuda(self.gpu_ids[0])
             self.mask = self.mask.cuda(self.gpu_ids[0])
-
 
 
         self.img_truth = self.img * 2 - 1
@@ -98,7 +98,6 @@ class Can(BaseModel):
 
         # fake
         D_fake, _ = netD(fake.detach())
-
         # loss for discriminator
         D_loss = (self.GANloss(D_real, True, True) + self.GANloss(D_fake, False, True)) / 2
 
@@ -111,7 +110,6 @@ class Can(BaseModel):
         base_function._unfreeze(self.net_D)
         self.loss_img_d = self.backward_D_basic(self.net_D, self.img_truth, self.img_g)
 
-
     def backward_G(self):
         """Calculate training loss for the generator"""
 
@@ -122,7 +120,7 @@ class Can(BaseModel):
 
         self.loss_ad_g = self.GANloss(D_fake, True, False) * self.opt.lambda_g
 
-        # calculate l1 loss ofr multi-scale outputs
+        # calculate l1 loss
         totalG_loss = 0
         self.loss_app_g = self.L1loss(self.img_truth, self.img_g) * self.opt.lambda_l1
         self.loss_per = self.per(self.img_g, self.img_truth) * self.opt.lambda_per
@@ -133,14 +131,14 @@ class Can(BaseModel):
         totalG_loss.backward()
 
     def optimize_parameters(self):
-        """update network weights"""
-        # compute the image completion results
+        """update net2 weights"""
+        # compute the inpainting results
         self.forward()
-        # optimize the discrinimator network parameters
+        # optimize the discrinimator net2 parameters
         self.optimizer_D.zero_grad()
         self.backward_D()
         self.optimizer_D.step()
-        # optimize the completion network parameters
+        # optimize the completion net2 parameters
         self.optimizer_G.zero_grad()
         self.backward_G()
         self.optimizer_G.step()

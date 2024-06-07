@@ -1,4 +1,4 @@
-"""This package contains modules related to function, network architectures, and models"""
+"""This package contains modules related to function, net2 architectures, and models"""
 
 import importlib
 from .base_model import BaseModel

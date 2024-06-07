@@ -50,12 +50,12 @@ if __name__ == '__main__':
             # save the latest model every <save_latest_freq> iterations to the disk
             if total_iteration % opt.save_latest_freq == 0:
                 print('saving the latest model (epoch %d, total_steps %d)' % (epoch, total_iteration))
-                model.save_networks('latest')
+                model.save_net2s('latest')
 
             # save the model every <save_iter_freq> iterations to the disk
             if total_iteration % opt.save_iters_freq == 0:
                 print('saving the model of iterations %d' % total_iteration)
-                model.save_networks(total_iteration)
+                model.save_net2s(total_iteration)
 
             if total_iteration > max_iteration:
                 keep_training = False

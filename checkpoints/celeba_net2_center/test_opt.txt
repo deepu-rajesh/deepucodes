@@ -1,0 +1,29 @@
+--------------Options--------------
+batchSize: 1
+checkpoints_dir: ./checkpoints
+display_id: 4
+display_port: 8097
+display_single_pane_ncols: 0
+display_winsize: 256
+fineSize: [256, 256]
+gpu_ids: 0
+how_many: 1
+img_file: D:\data\valA
+isTrain: False
+loadSize: [266, 266]
+mask_file: none
+mask_type: [0]
+model: can
+nThreads: 8
+name: celeba_net2_center
+no_augment: False
+no_flip: False
+no_rotation: False
+no_shuffle: False
+ntest: 1.0
+output_scale: 1
+phase: test
+resize_or_crop: resize_and_crop
+results_dir: D:\dev\canet\results
+which_iter: latest
+----------------End----------------

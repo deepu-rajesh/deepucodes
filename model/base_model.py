@@ -32,11 +32,11 @@ class BaseModel():
         pass
 
     def setup(self, opt):
-        """Load networks, create schedulers"""
+        """Load net2s, create schedulers"""
         if self.isTrain:
             self.schedulers = [base_function.get_scheduler(optimizer, opt) for optimizer in self.optimizers]
         if not self.isTrain or opt.continue_train:
-            self.load_networks(opt.which_iter)
+            self.load_net2s(opt.which_iter)
 
     def eval(self):
         """Make models eval mode during test time"""
@@ -91,8 +91,8 @@ class BaseModel():
         return dis_ret
 
     # save model
-    def save_networks(self, which_epoch):
-        """Save all the networks to the disk"""
+    def save_net2s(self, which_epoch):
+        """Save all the net2s to the disk"""
         for name in self.model_names:
             if isinstance(name, str):
                 save_filename = '%s_net_%s.pth' % (which_epoch, name)
@@ -103,8 +103,8 @@ class BaseModel():
                     net.cuda()
 
     # load models
-    def load_networks(self, which_epoch):
-        """Load all the networks from the disk"""
+    def load_net2s(self, which_epoch):
+        """Load all the net2s from the disk"""
         for name in self.model_names:
             if isinstance(name, str):
                 filename = '%s_net_%s.pth' % (which_epoch, name)
@@ -118,9 +118,9 @@ class BaseModel():
                     try:
                         pretrained_dict = {k:v for k,v in pretrained_dict.items() if k in model_dict}
                         net.load_state_dict(pretrained_dict)
-                        print('Pretrained network %s has excessive layers; Only loading layers that are used' % name)
+                        print('Pretrained net2 %s has excessive layers; Only loading layers that are used' % name)
                     except:
-                        print('Pretrained network %s has fewer layers; The following are not initialized:' % name)
+                        print('Pretrained net2 %s has fewer layers; The following are not initialized:' % name)
                         not_initialized = set()
                         for k, v in pretrained_dict.items():
                             if v.size() == model_dict[k].size():

@@ -17,7 +17,9 @@ class CreateDataset(data.Dataset):
             if not self.opt.isTrain:
                 self.mask_paths = self.mask_paths * (max(1, math.ceil(self.img_size / self.mask_size)))
         self.transform = get_transform(opt)
-
+    def preprocess_single_image(self, img_pil):
+        img = self.transform(img_pil)
+        return img
     def __getitem__(self, index):
         # load image
         img, img_path = self.load_img(index)
@@ -58,10 +60,10 @@ class CreateDataset(data.Dataset):
 
         if mask_type == 4:
             return task.random_freefrom_mask(img)
-
+#
         if mask_type == 9:
             return task.four_mask(img)
-
+#
         # external mask from "Image Inpainting for Irregular Holes Using Partial Convolutions (ECCV18)"
         if mask_type == 3:
             if self.opt.isTrain:
