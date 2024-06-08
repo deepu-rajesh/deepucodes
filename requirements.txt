@@ -1,0 +1,9 @@
+streamlit
+torch
+torchvision
+torchaudio
+visdom
+dominate
+einopos
+Pillow
+opencv-python-headless
